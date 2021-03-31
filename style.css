@@ -1,0 +1,12 @@
+body {
+  background-color: pink;
+}
+
+.jsForm,
+.greeting {
+  display: none;
+}
+
+.showing {
+  display: block;
+}
