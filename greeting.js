@@ -1,8 +1,8 @@
-const form = document.querySelector(".jsForm");
+const form = document.querySelector(".askNameForm");
 const nameInput = form.querySelector("input");
 const greetingText = document.querySelector(".greeting");
 
-const onSubmit = (event) => {
+const onSubmitGreeting = (event) => {
   event.preventDefault();
   const name = nameInput.value;
   greeting(name);
@@ -11,7 +11,7 @@ const onSubmit = (event) => {
 
 const askForName = () => {
   form.classList.add("showing");
-  form.addEventListener("submit", onSubmit);
+  form.addEventListener("submit", onSubmitGreeting);
 }
 
 const greeting = (text) => {

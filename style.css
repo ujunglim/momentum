@@ -2,7 +2,7 @@ body {
   background-color: pink;
 }
 
-.jsForm,
+.askNameForm,
 .greeting {
   display: none;
 }
