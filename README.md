@@ -8,6 +8,8 @@
 
 ### 4. Background
 
+math
+
 ### 5. Weather
 
 - get geo location
@@ -26,7 +28,15 @@ const getPosSuccess = (position) => {
 
   For temperature in Celsius use units=metric
 
-  TODO
-  daily quote
-  daily photo
-  offline service
+###
+
+createElement
+appendChild
+filter
+forEach: list 안에 모든 item들을 위한 함수 실행
+
+### TODO
+
+daily quote
+daily photo
+offline service

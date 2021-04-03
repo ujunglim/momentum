@@ -14,12 +14,12 @@
   </header>
 
   <section class="main_section">
-    <h1 class="jsClock">00:00:00</h1>
+    <span class="jsClock">00:00:00</span>
   
-    <form class="askNameForm" >
-      <input type="text" placeholder="Hello, what's your name?" required />
+    <form class="askNameForm notvisible" >
+      <input type="text" placeholder="Hello, what's your name?" required autofocus/>
     </form>
-    <span class="greeting"></span>
+    <span class="greeting invisible"></span>
   </section>
   
   <footer>
@@ -27,15 +27,15 @@
     <span class="quote">quote</span>
     <button class="toDoBtn">ToDo</button>
 
-    <div class="toDoPopUp">
-      <span>ToDo List</span>
-      <ul class="toDoList"></ul>
-      <form class="toDoForm">
-        <input type="text" placeholder="Write a toDo"/>
-      </form>
+    <div class="toDoPopUp invisible">
+      <div class ="content">
+        <span class="title">ToDo List</span>
+        <ul class="toDoList"></ul>
+        <form class="toDoForm">
+          <input type="text" placeholder="Write a ToDo" required />
+        </form>
+      </div>
     </div>
-
-    
   </footer>
   
 

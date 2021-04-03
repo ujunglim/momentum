@@ -10,13 +10,13 @@ const onSubmitGreeting = (event) => {
 }
 
 const askForName = () => {
-  form.classList.add("showing");
+  form.classList.add("visible");
   form.addEventListener("submit", onSubmitGreeting);
 }
 
 const greeting = (text) => {
-  form.classList.remove("showing");
-  greetingText.classList.add("showing");
+  form.classList.remove("visible");
+  greetingText.classList.add("visible");
   greetingText.innerText = `Hello ${text}`;
 }
 

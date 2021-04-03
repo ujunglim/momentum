@@ -1,9 +1,9 @@
-
-
 const toDoBtn = document.querySelector(".toDoBtn");
+const toDoPopUp = document.querySelector(".toDoPopUp")
 
 const onToDoClick = () => {
-  console.log("clicked")
+  toDoPopUp.classList.toggle("visible");
+  toDoInput.focus();  // autofocus
 }
 
 toDoBtn.addEventListener("click", onToDoClick) ;
@@ -17,7 +17,7 @@ const toDoList = document.querySelector(".toDoList");
 
 let toDos = [];
 
-const saveToDos = () => {
+const saveStorage = () => {
   // Only string can be saved in localStorage
   localStorage.setItem("toDos", JSON.stringify(toDos));
 }
@@ -31,26 +31,33 @@ const deleteToDo = (event) => {
     return toDo.id !== parseInt(li.id)
   })
   toDos = cleanToDos;
-  saveToDos();
+  saveStorage();
 }
 
+// create list 
 const showToDo = (text) => {
-  const li = document.createElement('li');
-  const span = document.createElement('span');
-  const deleteBtn = document.createElement('button');
-  // const editBtn = document.createElement('button');
   const id = toDos.length + 1;
 
-  span.innerText = text;
+  const li = document.createElement('li');
+  const inputCheck = document.createElement('input');
+  inputCheck.id = id;
+  inputCheck.type='checkbox';
+
+  const label = document.createElement('label');
+  label.for = id;
+  label.innerText = text;
+
+  const deleteBtn = document.createElement('button');
+  const editBtn = document.createElement('button');
   deleteBtn.innerHTML = "❌";
-  // editBtn.innerHTML = "✍"; 
+  editBtn.innerHTML = "✍"; 
   deleteBtn.addEventListener("click", deleteToDo);
 
-
   li.id = id;
-  li.appendChild(span);
+  li.appendChild(inputCheck);
+  li.appendChild(label);
   li.appendChild(deleteBtn);
-  // li.appendChild(editBtn);
+  li.appendChild(editBtn);
 
   toDoList.appendChild(li);
 
@@ -61,12 +68,15 @@ const showToDo = (text) => {
   // push to array
   toDos.push(toDoObj);
   // save to localStorage
-  saveToDos();
+  saveStorage();
 }
 
 const onSubmitToDo = (event) => {
   event.preventDefault();
   const toDo = toDoInput.value;
+  if(toDo === "") {
+    return;
+  }
   showToDo(toDo);
   toDoInput.value = "";
 }
