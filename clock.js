@@ -1,5 +1,4 @@
-const clockContainer = document.getElementById('jsClock');
-const clockTitle = clockContainer.querySelector('h1');
+const clock = document.querySelector('.jsClock');
 
 const getTime = () => {
   const date = new Date();
@@ -11,7 +10,7 @@ const getTime = () => {
   minutes = minutes < 10 ? `0${minutes}`: minutes;
   seconds = seconds < 10 ? `0${seconds}`: seconds;
 
-  clockTitle.innerText = `${hours}:${minutes}:${seconds}`;
+  clock.innerText = `${hours}:${minutes}:${seconds}`;
 }
 
 function init() {

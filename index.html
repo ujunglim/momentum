@@ -8,19 +8,36 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="jsClock">
-    <h1>00:00:00</h1>
-  </div>
+  <header>
+    <button class="search">Search</button>
+    <span class="jsWeather"></span>
+  </header>
 
-  <form class="askNameForm" >
-    <input type="text" placeholder="What's your name?" />
-  </form>
-  <h4 class="greeting"></h4>
+  <section class="main_section">
+    <h1 class="jsClock">00:00:00</h1>
+  
+    <form class="askNameForm" >
+      <input type="text" placeholder="Hello, what's your name?" required />
+    </form>
+    <span class="greeting"></span>
+  </section>
+  
+  <footer>
+    <a>link</a>
+    <span class="quote">quote</span>
+    <button class="toDoBtn">ToDo</button>
 
-  <form class="toDoForm">
-    <input type="text" placeholder="Write a toDo"/>
-  </form>
-  <ul class="toDoList"></ul>
+    <div class="toDoPopUp">
+      <span>ToDo List</span>
+      <ul class="toDoList"></ul>
+      <form class="toDoForm">
+        <input type="text" placeholder="Write a toDo"/>
+      </form>
+    </div>
+
+    
+  </footer>
+  
 
 
 
@@ -28,5 +45,6 @@
   <script src="greeting.js"></script>
   <script src="toDo.js"></script>
   <script src="background.js"></script>
+  <script src="weather.js"></script>
 </body>
 </html>

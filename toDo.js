@@ -1,3 +1,16 @@
+
+
+const toDoBtn = document.querySelector(".toDoBtn");
+
+const onToDoClick = () => {
+  console.log("clicked")
+}
+
+toDoBtn.addEventListener("click", onToDoClick) ;
+
+
+
+//=====================================
 const toDoForm = document.querySelector(".toDoForm");
 const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.querySelector(".toDoList");
