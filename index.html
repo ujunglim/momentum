@@ -10,7 +10,14 @@
 <body>
   <header>
     <button class="search">Search</button>
-    <span class="jsWeather"></span>
+    <div class="weather">
+      <div class="jsWeather_info">
+        <i class="weather_icon"></i>
+        <span class="jsWeather_temp"></span>
+      </div>
+    
+      <span class="jsWeather_location"></span>
+    </div>
   </header>
 
   <section class="main_section">
@@ -27,7 +34,7 @@
     <span class="quote">quote</span>
     <button class="toDoBtn">ToDo</button>
 
-    <div class="toDoPopUp ">
+    <div class="toDoPopUp invisible">
       <div class ="content">
         <span class="title">ToDo List</span>
         <ul class="toDoList"></ul>
@@ -46,5 +53,7 @@
   <script src="toDo.js"></script>
   <script src="background.js"></script>
   <script src="weather.js"></script>
+  <script src="fontawesome.js"></script>
+
 </body>
 </html>

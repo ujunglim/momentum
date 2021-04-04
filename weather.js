@@ -1,5 +1,6 @@
-
-const weatherDOM = document.querySelector(".jsWeather");
+const weather_icon = document.querySelector(".weather_icon");
+const weather_temp = document.querySelector(".jsWeather_temp");
+const weather_location = document.querySelector(".jsWeather_location");
 
 const API_KEY = "b53ce7cd48c147440cd16264b4419699";
 const COORD = 'coord'
@@ -13,8 +14,38 @@ const getWeather = (lat, lon) => {
     const weather = json.weather[0].main;
     const temp = Math.round(json.main.temp);
     const location = json.name;
+    let icon;
 
-    weatherDOM.innerText = `${weather} ${temp} ${location}`
+    switch(weather) {
+      case "Clear":
+        icon = "fas fa-sun";
+        break;
+      case "Rain":
+        icon = "fas fa-cloud-showers-heavy";
+        break;
+      case "Snow":
+        icon = "far fa-snowflake"
+        break;
+      case "Clouds":
+        icon = "far fa-cloud";
+        break;
+      case "Thunderstorm":
+        icon = "far fa-bolt";  
+        break;
+      case "Drizzle":
+        icon = "far fa-cloud-rain";  
+        break;
+      case "Dust":
+        icon = "far fa-water";  
+        break;
+      case "Mist":
+        icon = "far fa-smog";  
+        break;
+    }
+
+    weather_icon.setAttribute("class", icon + " fa-2x");  // size
+    weather_temp.innerText = `${temp}°`;
+    weather_location.innerText = `${location}`;
   })
 }
 
