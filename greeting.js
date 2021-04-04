@@ -1,11 +1,11 @@
 const form = document.querySelector(".askNameForm");
 const nameInput = form.querySelector("input");
-const greetingText = document.querySelector(".greeting");
+const greeting = document.querySelector(".greeting");
 
 const onSubmitGreeting = (event) => {
   event.preventDefault();
   const name = nameInput.value;
-  greeting(name);
+  showGreeting(name);
   localStorage.setItem("currentUser", name);
 }
 
@@ -14,10 +14,24 @@ const askForName = () => {
   form.addEventListener("submit", onSubmitGreeting);
 }
 
-const greeting = (text) => {
+const showGreeting = (text) => {
   form.classList.remove("visible");
-  greetingText.classList.add("visible");
-  greetingText.innerText = `Hello ${text}`;
+  const hours = new Date().getHours();
+  let greetingText;
+
+  if(6 <= hours && hours< 12) {
+    greetingText = "Good morning,";
+  }
+  else if(12 <= hours && hours < 18) {
+    greetingText = "Good afternoon,";
+  }
+  else if(18 <= hours && hours< 24){
+    greetingText = "Good evening,";
+  }
+
+  greeting.classList.add("visible");
+  greeting.innerText = `${greetingText} ${text}.`;
+
 }
 
 const loadName = () => {
@@ -26,7 +40,7 @@ const loadName = () => {
     askForName();
   }
   else {
-    greeting(currentUser);
+    showGreeting(currentUser);
   }
 }
 

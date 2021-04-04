@@ -1,5 +1,9 @@
 const toDoBtn = document.querySelector(".toDoBtn");
 const toDoPopUp = document.querySelector(".toDoPopUp")
+const toDoList = document.querySelector(".toDoList");
+const toDoForm = document.querySelector(".toDoForm");
+const toDoInput = toDoForm.querySelector("input");
+let toDos = [];
 
 const onToDoClick = () => {
   toDoPopUp.classList.toggle("visible");
@@ -7,15 +11,6 @@ const onToDoClick = () => {
 }
 
 toDoBtn.addEventListener("click", onToDoClick) ;
-
-
-
-//=====================================
-const toDoForm = document.querySelector(".toDoForm");
-const toDoInput = toDoForm.querySelector("input");
-const toDoList = document.querySelector(".toDoList");
-
-let toDos = [];
 
 const saveStorage = () => {
   // Only string can be saved in localStorage
@@ -34,28 +29,46 @@ const deleteToDo = (event) => {
   saveStorage();
 }
 
+const editToDo = (event) => {
+  const li = event.target.parentNode;
+  li.classList.add('editing');
+  // toDoContent[5].classList.add('editing');
+  // toDoContent.focus();
+
+  // const id = JSON.parse(event.target.parentNode.id);
+
+  // html
+  // console.log(toDos[id]);
+}
+
 // create list 
 const showToDo = (text) => {
-  const id = toDos.length + 1;
+  const id = toDos.length;
 
   const li = document.createElement('li');
   const inputCheck = document.createElement('input');
   inputCheck.id = id;
-  inputCheck.type='checkbox';
+  inputCheck.type= 'checkbox';
 
   const label = document.createElement('label');
   label.for = id;
-  label.innerText = text;
+  // label.innerText = text;
+
+  const span = document.createElement('span');
+  span.className = "toDoContent"
+  span.innerHTML = text;
 
   const deleteBtn = document.createElement('button');
   const editBtn = document.createElement('button');
   deleteBtn.innerHTML = "❌";
   editBtn.innerHTML = "✍"; 
   deleteBtn.addEventListener("click", deleteToDo);
+  editBtn.addEventListener("click", editToDo);
 
   li.id = id;
   li.appendChild(inputCheck);
   li.appendChild(label);
+  li.appendChild(span);
   li.appendChild(deleteBtn);
   li.appendChild(editBtn);
 
@@ -86,6 +99,7 @@ const loadToDos = () => {
 
   if(loadedToDos) {
     loadedToDos.forEach(loadedToDo => showToDo(loadedToDo.text));
+
   }
 }
 
