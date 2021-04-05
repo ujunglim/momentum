@@ -15,32 +15,39 @@ const getWeather = (lat, lon) => {
     const temp = Math.round(json.main.temp);
     const location = json.name;
     let icon;
+    const hour = new Date().getHours();
 
-    switch(weather) {
-      case "Clear":
-        icon = "fas fa-sun";
-        break;
-      case "Rain":
-        icon = "fas fa-cloud-showers-heavy";
-        break;
-      case "Snow":
-        icon = "far fa-snowflake"
-        break;
-      case "Clouds":
-        icon = "far fa-cloud";
-        break;
-      case "Thunderstorm":
-        icon = "far fa-bolt";  
-        break;
-      case "Drizzle":
-        icon = "far fa-cloud-rain";  
-        break;
-      case "Dust":
-        icon = "far fa-water";  
-        break;
-      case "Mist":
-        icon = "far fa-smog";  
-        break;
+    // night
+    if(hour >= 19 || hour < 5) {
+      icon = "fas fa-moon";
+    }
+    else {
+      switch(weather) {
+        case "Clear":
+          icon = "fas fa-sun";
+          break;
+        case "Rain":
+          icon = "fas fa-cloud-showers-heavy";
+          break;
+        case "Snow":
+          icon = "far fa-snowflake"
+          break;
+        case "Clouds":
+          icon = "far fa-cloud";
+          break;
+        case "Thunderstorm":
+          icon = "far fa-bolt";  
+          break;
+        case "Drizzle":
+          icon = "far fa-cloud-rain";  
+          break;
+        case "Dust":
+          icon = "far fa-water";  
+          break;
+        case "Mist":
+          icon = "far fa-smog";  
+          break;
+      }
     }
 
     weather_icon.setAttribute("class", icon + " fa-2x");  // size
