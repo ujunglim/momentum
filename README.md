@@ -1,5 +1,7 @@
 # yumentum
 
+with live server, gh page
+
 ### 1. Clock
 
 ### 2. Ask name

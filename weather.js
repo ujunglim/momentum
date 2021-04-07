@@ -8,12 +8,12 @@ const COORD = 'coord'
 const getWeather = (lat, lon) => {
   fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`)
   .then(response => {
-    return response.json()
+    return response.json();
   })
-  .then(json => {
-    const weather = json.weather[0].main;
-    const temp = Math.round(json.main.temp);
-    const location = json.name;
+  .then(data => {
+    const weather = data.weather[0].main;
+    const temp = Math.round(data.main.temp);
+    const location = data.name;
     let icon;
     const hour = new Date().getHours();
 
@@ -33,19 +33,19 @@ const getWeather = (lat, lon) => {
           icon = "far fa-snowflake"
           break;
         case "Clouds":
-          icon = "far fa-cloud";
+          icon = "fas fa-cloud";
           break;
         case "Thunderstorm":
-          icon = "far fa-bolt";  
+          icon = "fas fa-bolt";  
           break;
         case "Drizzle":
-          icon = "far fa-cloud-rain";  
+          icon = "fas fa-cloud-rain";  
           break;
         case "Dust":
-          icon = "far fa-water";  
+          icon = "fas fa-water";  
           break;
         case "Mist":
-          icon = "far fa-smog";  
+          icon = "fas fa-smog";  
           break;
       }
     }
@@ -69,8 +69,8 @@ const getPosSuccess = (position) => {
   getWeather(latitude, longitude)
 }
 
-const getPosError = () => {
-  console.log("Can't access geo location");
+const getPosError = (error) => {
+  console.log(error.message, "Can't access geo location");
 }
 
 const askForCoord = () => {

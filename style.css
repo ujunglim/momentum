@@ -36,6 +36,8 @@ body {
 
   background-color: #2c3e50;
   color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 button,
@@ -115,10 +117,6 @@ header {
   margin-left: 0.5rem;
 }
 
-.jsWeather_location {
-  font-size: 0.7rem;
-}
-
 /* main_section */
 .main_section {
   display: flex;
@@ -154,6 +152,30 @@ footer {
   width: 100%;
   height: 3rem;
   padding: 0 var(--small-padding);
+}
+
+.quoteContainer {
+  position: relative;
+  text-align: center;
+  transition: all 300ms ease-in-out;
+  cursor: default;
+  background: purple;
+}
+.quoteContainer:hover .quote {
+  transform: translateY(-12px);
+  color: hotpink;
+}
+.quoteAuthor {
+  position: absolute;
+  margin-left: 0.5em;
+  opacity: 0;
+  transition: all 300ms ease-in-out;
+  cursor: default;
+}
+.quoteContainer:hover .quoteAuthor {
+  opacity: 1;
+  transform: translateY(12px);
+  color: var(--lightblue-color);
 }
 
 .toDoBtn:hover {
