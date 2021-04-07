@@ -1,4 +1,5 @@
 const quote = document.querySelector('.quote');
+const quoteAuthor = document.querySelector('.quoteAuthor');
 
 const getQuote = () => {
   fetch('./quotes.json')
@@ -6,14 +7,14 @@ const getQuote = () => {
     return response.json();
   })
   .then(data => {
-    // console.log(data[0].text, data[0].author)
+    const randomNum = Math.floor(Math.random()*data.length);
+    quote.innerText = `"${data[randomNum].text}"`;
+    quoteAuthor.innerText = data[randomNum].author;
   })
 }
 
 function init() {
   getQuote();
-
-
 }
 
 init();

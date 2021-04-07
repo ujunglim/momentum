@@ -150,32 +150,35 @@ footer {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 3rem;
+  height: 4rem;
   padding: 0 var(--small-padding);
 }
 
 .quoteContainer {
-  position: relative;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.quote {
   transition: all 300ms ease-in-out;
-  cursor: default;
-  background: purple;
+  font-size: 1.125rem;
 }
-.quoteContainer:hover .quote {
-  transform: translateY(-12px);
-  color: hotpink;
-}
+
 .quoteAuthor {
   position: absolute;
-  margin-left: 0.5em;
   opacity: 0;
   transition: all 300ms ease-in-out;
-  cursor: default;
+  font-size: 0.875rem;
 }
+
+.quoteContainer:hover .quote {
+  transform: translateY(-12px);
+}
+
 .quoteContainer:hover .quoteAuthor {
-  opacity: 1;
+  opacity: 0.9;
   transform: translateY(12px);
-  color: var(--lightblue-color);
 }
 
 .toDoBtn:hover {
