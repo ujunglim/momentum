@@ -94,7 +94,7 @@ header {
   align-items: center;
   height: 5rem;
   padding: var(--small-padding);
-  /* background: rgb(102, 184, 102); */
+  transition: all 300ms ease-in-out;
 }
 
 .searchBox {
@@ -136,11 +136,12 @@ header {
   margin-left: 0.5rem;
 }
 
-/* main_section */
-.main_section {
+/* main content */
+.mainContent {
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: all 300ms ease-in-out;
 }
 
 .jsClock {

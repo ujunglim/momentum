@@ -7,42 +7,39 @@ const onSubmitGreeting = (event) => {
   const name = nameInput.value;
   showGreeting(name);
   localStorage.setItem("currentUser", name);
-}
+};
 
 const askForName = () => {
   form.classList.add("visible");
   form.addEventListener("submit", onSubmitGreeting);
-}
+};
 
 const showGreeting = (text) => {
   form.classList.remove("visible");
   const hours = new Date().getHours();
   let greetingText;
 
-  if(6 <= hours && hours< 12) {
+  if (6 <= hours && hours < 12) {
     greetingText = "Good morning,";
-  }
-  else if(12 <= hours && hours < 18) {
+  } else if (12 <= hours && hours < 18) {
     greetingText = "Good afternoon,";
-  }
-  else if(18 <= hours && hours< 24){
+  } else if (18 <= hours && hours < 24) {
     greetingText = "Good evening,";
   }
 
   greeting.classList.add("visible");
   greeting.innerText = `${greetingText} ${text}.`;
-
-}
+};
 
 const loadName = () => {
   const currentUser = localStorage.getItem("currentUser");
-  if(!currentUser) {
+  if (!currentUser) {
     askForName();
   }
   else {
     showGreeting(currentUser);
   }
-}
+};
 
 function init() {
   loadName();

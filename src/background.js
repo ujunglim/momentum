@@ -37,6 +37,20 @@ const loadBGImage = () => {
   })
 }
 
+// show full bg image
+const header = document.querySelector("header");
+const mainContent = document.querySelector(".mainContent");
+
+linkDOM.addEventListener("mouseenter", () => {
+  header.style.opacity = 0;
+  mainContent.style.opacity = 0;
+})
+
+linkDOM.addEventListener("mouseleave", () => {
+  header.style.opacity = 1;
+  mainContent.style.opacity = 1;
+})
+
 function init() {
   loadBGImage();
 }
