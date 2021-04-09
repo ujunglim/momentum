@@ -21,7 +21,7 @@ const deleteToDo = (event) => {
   const li = event.target.parentNode;
   // html 
   toDoList.removeChild(li);
-  // filter
+  // localstorage
   const cleanToDos = toDos.filter(toDo => {
     return toDo.id !== parseInt(li.id)
   })
@@ -31,20 +31,24 @@ const deleteToDo = (event) => {
 
 const editToDo = (event) => {
   const li = event.target.parentNode;
-  li.classList.add('editing');
-  // toDoContent[5].classList.add('editing');
-  // toDoContent.focus();
+  const content = li.querySelector(".toDoContent");
+  content.removeAttribute("disabled");
+  content.focus();
+  content.classList.add("editing");
 
-  // const id = JSON.parse(event.target.parentNode.id);
-
-  // html
-  // console.log(toDos[id]);
+  content.addEventListener("keypress", (event) => {
+    if(event.key === "Enter") {
+      toDos[li.id].text = content.value;
+      saveStorage();
+      content.disabled = "true";
+      content.classList.remove("editing");
+    }
+  });
 }
 
 // create list 
 const showToDo = (text) => {
   const id = toDos.length;
-
   const li = document.createElement('li');
   const inputCheck = document.createElement('input');
   inputCheck.id = id;
@@ -52,11 +56,12 @@ const showToDo = (text) => {
 
   const label = document.createElement('label');
   label.for = id;
-  // label.innerText = text;
 
-  const span = document.createElement('span');
-  span.className = "toDoContent"
-  span.innerHTML = text;
+  const content = document.createElement('input');
+  content.className = "toDoContent"
+  content.maxLength = 30;
+  content.value = text;
+  content.disabled = "true";
 
   const deleteBtn = document.createElement('button');
   const editBtn = document.createElement('button');
@@ -68,7 +73,7 @@ const showToDo = (text) => {
   li.id = id;
   li.appendChild(inputCheck);
   li.appendChild(label);
-  li.appendChild(span);
+  li.appendChild(content);
   li.appendChild(deleteBtn);
   li.appendChild(editBtn);
 
@@ -99,10 +104,8 @@ const loadToDos = () => {
 
   if(loadedToDos) {
     loadedToDos.forEach(loadedToDo => showToDo(loadedToDo.text));
-
   }
 }
-
 
 function init() {
   loadToDos();

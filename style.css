@@ -259,6 +259,7 @@ footer {
 
 .toDoPopUp li {
   display: flex;
+  justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 0.5rem;
 }
@@ -272,11 +273,11 @@ footer {
 }
 
 .editing {
-  color: grey;
+  color: red;
 }
 
 .toDoContent {
-  width: 14.5rem;
+  width: 14rem;
   margin-left: 0.5rem;
   word-wrap: break-word;
 }
