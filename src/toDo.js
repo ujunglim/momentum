@@ -66,6 +66,9 @@ const showToDo = (text) => {
   const inputCheck = document.createElement('input');
   inputCheck.id = id;
   inputCheck.type= 'checkbox';
+  inputCheck.addEventListener("click", () => {
+    content.classList.toggle("checked");
+  });
 
   const label = document.createElement('label');
   label.for = id;

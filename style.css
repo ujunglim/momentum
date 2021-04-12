@@ -74,6 +74,11 @@ a {
   display: block;
 }
 
+.checked {
+  color: grey;
+  text-decoration: line-through;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -272,8 +277,8 @@ footer {
   color: grey;
 }
 
-.editing {
-  color: red;
+.editing:focus {
+  color: #858585;
 }
 
 textarea {
@@ -284,6 +289,8 @@ textarea {
   box-sizing: padding-box;
   width: 14rem;
   margin-left: 0.5rem;
+  color: black;
+  background: none;
 }
 
 textarea:focus {
