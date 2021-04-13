@@ -36,6 +36,7 @@ const onExpandTextarea = ({ target }) => {
 const editToDo = (event) => {
   const li = event.target.parentNode;
   const content = li.querySelector(".toDoContent");
+  
   content.removeAttribute("disabled");
   content.focus();
   content.classList.add("editing");
@@ -60,7 +61,6 @@ const editToDo = (event) => {
 
 // create list 
 const showToDo = (text, isChecked) => {
-  console.log(text, isChecked)
   const id = toDos.length;
   const li = document.createElement('li');
   const inputCheck = document.createElement('input');

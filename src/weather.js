@@ -18,7 +18,7 @@ const getWeather = (lat, lon) => {
     const hour = new Date().getHours();
 
     // night
-    if(hour >= 19 || hour < 5) {
+    if(hour >= 21 || hour < 5) {
       icon = "fas fa-moon";
     }
     else {
