@@ -30,7 +30,7 @@ const deleteToDo = (event) => {
 }
 
 const onExpandTextarea = ({ target }) => {
-  target.rows = Math.ceil(target.value.length / 30);
+  target.rows = Math.ceil(target.value.length / 25);
 }
 
 const editToDo = (event) => {
@@ -39,7 +39,7 @@ const editToDo = (event) => {
   content.removeAttribute("disabled");
   content.focus();
   content.classList.add("editing");
-  content.rows = Math.ceil(content.value.length / 30);
+  content.rows = Math.ceil(content.value.length / 25);
 
   content.addEventListener('input', onExpandTextarea)
   content.addEventListener("keypress", (event) => {
@@ -56,18 +56,23 @@ const editToDo = (event) => {
       content.classList.remove("editing");
     }
   });
-
 }
 
 // create list 
-const showToDo = (text) => {
+const showToDo = (text, isChecked) => {
+  console.log(text, isChecked)
   const id = toDos.length;
   const li = document.createElement('li');
   const inputCheck = document.createElement('input');
   inputCheck.id = id;
   inputCheck.type= 'checkbox';
+  inputCheck.className = "checkbox";
+  
+  
   inputCheck.addEventListener("click", () => {
     content.classList.toggle("checked");
+    toDoObj.isChecked = !toDoObj.isChecked;
+    saveStorage();
   });
 
   const label = document.createElement('label');
@@ -77,28 +82,30 @@ const showToDo = (text) => {
   content.className = "toDoContent";
   content.value = text;
   content.disabled = "true";
-  content.rows = Math.ceil(content.value.length / 30);
+  content.rows = Math.ceil(content.value.length / 25);
 
-  const deleteBtn = document.createElement('button');
+  if(isChecked) {
+    inputCheck.checked = true;
+    content.classList.add("checked");
+  }
+
   const editBtn = document.createElement('button');
-  deleteBtn.innerHTML = "❌";
+  const deleteBtn = document.createElement('button');
   editBtn.innerHTML = "✍"; 
-  deleteBtn.addEventListener("click", deleteToDo);
+  deleteBtn.innerHTML = "❌";
   editBtn.addEventListener("click", editToDo);
+  deleteBtn.addEventListener("click", deleteToDo);
 
   li.id = id;
   li.appendChild(inputCheck);
   li.appendChild(label);
   li.appendChild(content);
-  li.appendChild(deleteBtn);
   li.appendChild(editBtn);
+  li.appendChild(deleteBtn);
 
   toDoList.appendChild(li);
 
-  const toDoObj = {
-    text: text,
-    id: id
-  }
+  const toDoObj = { text, id, isChecked };
   // push to array
   toDos.push(toDoObj);
   // save to localStorage
@@ -120,7 +127,7 @@ const loadToDos = () => {
   const loadedToDos = JSON.parse(localStorage.getItem("toDos"));
 
   if(loadedToDos) {
-    loadedToDos.forEach(loadedToDo => showToDo(loadedToDo.text));
+    loadedToDos.forEach(loadedToDo => showToDo(loadedToDo.text, loadedToDo.isChecked));
   }
 }
 

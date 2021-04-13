@@ -242,24 +242,40 @@ footer {
   color: black;
   box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.37);
   border-radius: 0.4rem;
-  padding: 1rem;
-
-  /* backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  transform: translateY(0);
-  transition: all 300ms ease-in-out; */
+  padding: 1rem 0.2rem 1rem 1rem;
 }
 
 .toDoPopUp .content {
   position: relative;
-  width: 18rem;
+  width: 19rem;
   display: flex;
   flex-direction: column;
 }
 
 .toDoPopUp .title {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin-bottom: 1rem;
+}
+
+.toDoList {
+  max-height: 410px;
+  overflow-y: overlay;
+  padding-right: 1rem;
+}
+
+/* custom webkit scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 10rem;
+  display: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: lightgrey;
+  border-radius: 10px;
+}
+:hover::-webkit-scrollbar {
+  display: initial;
 }
 
 .toDoPopUp li {
@@ -269,8 +285,13 @@ footer {
   margin-bottom: 0.5rem;
 }
 
+.checkbox {
+  margin-top: 5px;
+}
+
 .toDoForm input {
   width: 100%;
+  margin-top: 0.5rem;
 }
 
 .toDoForm input::placeholder {
@@ -287,10 +308,12 @@ textarea {
   display: block;
   overflow: hidden;
   box-sizing: padding-box;
-  width: 14rem;
-  margin-left: 0.5rem;
+  width: 13.5rem;
   color: black;
   background: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: medium;
 }
 
 textarea:focus {
